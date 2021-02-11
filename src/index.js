@@ -4,7 +4,7 @@ function assign(target, source) {
 	for (let i in source) {
 		if (Array.isArray(target[i])) {
 			concat(target[i], source[i]);
-		} else if (typeof(target[i]) == "object") {
+		} else if (typeof(target[i]) == "object" && !/^__proto__|constructor|prototype$/.test(i)) {
 			assign(target[i], source[i]);
 		} else {
 			target[i] = source[i];
